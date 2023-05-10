@@ -1,0 +1,67 @@
+{
+  "name": "ionic5fullapp_final",
+  "version": "0.0.1",
+  "author": "Ionic Framework",
+  "homepage": "https://ionicframework.com/",
+  "scripts": {
+    "ng": "ng",
+    "start": "ionic serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/common": "~8.2.14",
+    "@angular/core": "~8.2.14",
+    "@angular/fire": "^5.4.1",
+    "@angular/forms": "~8.2.14",
+    "@angular/platform-browser": "~8.2.14",
+    "@angular/platform-browser-dynamic": "~8.2.14",
+    "@angular/router": "~8.2.14",
+    "@capacitor/android": "^3.9.0",
+    "@capacitor/ios": "^3.9.0",
+    "@ionic-native/core": "^5.26.0",
+    "@ionic-native/google-maps": "^5.5.0",
+    "@ionic-native/status-bar": "^5.0.0",
+    "@ionic/angular": "^5.1.1",
+    "cordova-browser": "5.0.4",
+    "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-ionic-keyboard": "^2.2.0",
+    "cordova-plugin-ionic-webview": "^4.2.1",
+    "cordova-plugin-whitelist": "^1.3.3",
+    "core-js": "^2.5.4",
+    "firebase": "^7.14.3",
+    "rxjs": "~6.5.1",
+    "sw-toolbox": "3.6.0",
+    "tslib": "^1.9.0",
+    "zone.js": "~0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.803.20",
+    "@angular/cli": "~8.3.23",
+    "@angular/compiler": "~8.2.14",
+    "@angular/compiler-cli": "~8.2.14",
+    "@angular/language-service": "~8.2.14",
+    "@capacitor/cli": "^3.9.0",
+    "@capacitor/core": "^3.9.0",
+    "@ionic/angular-toolkit": "^2.1.1",
+    "@ionic/storage": "^2.3.1",
+    "@types/node": "~8.9.4",
+    "ts-node": "~7.0.0",
+    "typescript": "~3.4.3"
+  },
+  "description": "An Ionic project",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-keyboard": {}
+    },
+    "platforms": [
+      "browser"
+    ]
+  }
+}
