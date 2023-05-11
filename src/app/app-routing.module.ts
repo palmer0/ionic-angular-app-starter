@@ -9,22 +9,55 @@ const routes: Routes = [
       import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: 'animals',
+    loadChildren: () =>
+      import('./pages/animal-list/animal-list.module').then( m => m.AnimalListPageModule)
   },
   {
     path: 'animals/:id',
     loadChildren: () =>
-      import('./pages/animal-detail/animal-detail.module')
-        .then( m => m.AnimalDetailPageModule)
+      import('./pages/animal-detail/animal-detail.module').then( m => m.AnimalDetailPageModule)
   },
   {
-    path: 'animals',
-    loadChildren: () =>
-      import('./pages/animal-list/animal-list.module')
-        .then( m => m.AnimalListPageModule)
+    path: 'developers',
+    loadChildren: () => 
+      import('./pages/developers/developers.module').then( m => m.DevelopersPageModule)
   },
+  {
+    path: 'developers/:id',
+    loadChildren: () => 
+      import('./pages/developer/developer.module').then( m => m.DeveloperPageModule)
+  },
+  {
+    path: 'songs',
+    loadChildren: () => 
+    import('./pages/song-list/song-list.module').then( m => m.SongListPageModule)
+  },
+  {
+    path: 'songs/:id',
+    loadChildren: () => 
+    import('./pages/song-details/song-details.module').then( m => m.SongDetailsPageModule)
+  },
+  {
+    path: "folder/:id",
+    loadChildren: () =>
+      import("./pages/folder/folder.module").then((m) => m.FolderPageModule),
+  },
+  {
+    path: "category",
+    loadChildren: () =>
+      import("./pages/category/category.module").then((m) => m.CategoryPageModule),
+  },
+  {
+    path: "person",
+    loadChildren: () =>
+      import("./pages/person/person.module").then((m) => m.PersonPageModule),
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

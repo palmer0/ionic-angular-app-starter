@@ -1,25 +1,45 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-
-    <ion-title>
-      Favorites
-    </ion-title>
-    <ion-buttons slot="end">
-      <!--<ion-button (click)="goToAnimals()">Animals</ion-button>-->
-      <ion-button [routerLink]="['/animals']">Animals</ion-button>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-title>Favorites</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<!--
+<ion-header>
+  <ion-toolbar >
+
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons slot="end">
+     
+      <ion-button [routerLink]="['/', 'developers']">
+        <ion-icon name="construct"></ion-icon>
+      </ion-button>
+
+      <ion-button [routerLink]="['/', 'animals']">
+        <ion-icon name="fish"></ion-icon>
+      </ion-button>
+
+   
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+-->
+
+<ion-content >
   <!--<ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>-->
 
   <ion-list>
     <ion-item-sliding *ngFor="let animal of animals ">
-      <ion-item [routerLink]="['/animals', animal.id]">
+      <ion-item [routerLink]="['/animals', animal.id]" 
+        class="ion-no-padding" style="margin:4px !important;">
 
 
-        <ion-thumbnail slot="start">
+        <ion-thumbnail slot="start" >
           <img [src]="animal.imageUrl" alt="{{ animal.name }} image">
         </ion-thumbnail>
 

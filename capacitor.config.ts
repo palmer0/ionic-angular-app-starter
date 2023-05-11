@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.example.app',
-  appName: 'ionic5fullapp_final',
+  appId: 'es.ulpgc.ionic.angular',
+  appName: 'IonicAngularApp',
   webDir: 'www',
   bundledWebRuntime: false,
   cordova: {

@@ -1,8 +1,24 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!--
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="animals"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Animal Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--
 <ion-header>
   <ion-toolbar>
 
     <ion-buttons slot="start">
-      <ion-back-button default-href="/animals"></ion-back-button>
+      <ion-back-button defaultHref="animals"></ion-back-button>
     </ion-buttons>
 
     <ion-title>
@@ -10,9 +26,10 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+-->
 
 <ion-content>
-  <ion-card *ngIf="animal">
+  <ion-card *ngIf="animal" class="ion-no-margin" style="margin:4px !important;">
     <img [src]="animal.imageUrl" >
 
     <ion-card-header>

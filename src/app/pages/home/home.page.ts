@@ -1,36 +1,59 @@
 import {Component, OnInit} from '@angular/core';
+
 import {Animal} from "../../models/animal.model";
 import {AnimalService} from "../../services/animal.service";
+import { DatabaseService } from './../../services/database.service';
+//import { ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: "app-home",
+  templateUrl: "home.page.html",
+  styleUrls: ["home.page.scss"],
 })
 export class HomePage implements OnInit {
-
   animals: Animal[] = [];
+  //animals?: Observable<Animal[]>;
 
-  constructor(private animalService: AnimalService) { }
+  //title = 'Favorites';
 
-  ngOnInit(): void {
+  constructor(
+    private db: DatabaseService,
+    private animalService: AnimalService,
+    //private toast: ToastController
+  ) {}
+
+  /* ngOnInit(): void {
+    //this.getAnimals();
+  } */
+
+  ngOnInit(){
+   
     this.getAnimals();
+    //this.title = 'Favorites';
+    
+    /* this.db.getDatabaseState().subscribe( (dbReady) => {
+
+      if (dbReady) {
+        //this.animals = this.animalService.getFavorites();
+        this.getAnimals();
+        this.title = 'Favorites';
+      }
+    }); */
   }
 
+  /* ionViewDidEnter(){
+    this.title = 'Favorites';
+  } */
+
   getAnimals(): void {
-    this.animalService.getFavorites()
-      .subscribe(animals => {
-        this.animals = animals;
-        //this.getFavorites();
-      });
+    this.animalService.getFavorites().subscribe((animals) => {
+      this.animals = animals;
+    });
   }
 
   toggleFavorite(animal: Animal): void {
     this.animalService.toggleFavorite(animal);
-
   }
 
-  goToAnimals() {
-
-  }
+  
 }

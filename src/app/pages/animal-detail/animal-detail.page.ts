@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {AnimalService} from "../../services/animal.service";
 import {Animal} from "../../models/animal.model";
+import { DatabaseService } from './../../services/database.service';
+
 
 @Component({
   selector: 'app-animal-detail',
@@ -15,15 +17,24 @@ export class AnimalDetailPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private animalService: AnimalService,
+    private db: DatabaseService,
     //private location: Location
   ) { }
 
-  ngOnInit(): void {
+  /* ngOnInit(): void {
     this.getAnimal();
+  } */
+
+  ngOnInit() {
+    this.db.getDatabaseState().subscribe((dbReady) => {
+      if (dbReady) {
+        this.getAnimal();
+      }
+    });
   }
 
   getAnimal(): void {
-    const id : string | null = this.route.snapshot.paramMap.get('id');
+    const id : string  = this.route.snapshot.paramMap.get('id');
     if (id ) {
       this.animalService.getAnimalById(id).subscribe(
         animal => this.animal = animal

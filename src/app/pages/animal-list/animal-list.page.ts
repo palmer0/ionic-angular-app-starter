@@ -1,32 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import {Animal} from "../../models/animal.model";
 import {AnimalService} from "../../services/animal.service";
-import {Observable} from "rxjs";
+import { DatabaseService } from './../../services/database.service';
 
 @Component({
-  selector: 'app-animal-list',
-  templateUrl: './animal-list.page.html',
-  styleUrls: ['./animal-list.page.scss'],
+  selector: "app-animal-list",
+  templateUrl: "./animal-list.page.html",
+  styleUrls: ["./animal-list.page.scss"],
 })
 export class AnimalListPage implements OnInit {
-
   animals: Animal[] = [];
   //favorites: Animal[] = [];
   //private animals$: Observable<Animal[]>;
 
-  constructor(private animalService: AnimalService) { }
+  constructor(
+    private db: DatabaseService,
+    private animalService: AnimalService
+  ) {}
 
-  ngOnInit(): void {
+  /* ngOnInit(): void {
     this.getAnimals();
     //this.animals$ = this.animalService.getAllAnimals();
+  } */
+
+  ngOnInit() {
+    this.db.getDatabaseState().subscribe((dbReady) => {
+      if (dbReady) {
+        this.getAnimals();
+      }
+    });
   }
 
   getAnimals(): void {
-    this.animalService.getAllAnimals()
-      .subscribe(animals => {
-        this.animals = animals;
-        //this.getFavorites();
-      });
+    this.animalService.getAllAnimals().subscribe((animals) => {
+      this.animals = animals;
+    });
   }
 
   /*getFavorites(): void {
@@ -50,6 +58,4 @@ export class AnimalListPage implements OnInit {
     this.getFavorites();
     */
   }
-
-
 }
