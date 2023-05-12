@@ -8,15 +8,13 @@ import { DbService } from "src/app/services/db.service";
   styleUrls: ["./category.page.scss"],
 })
 export class CategoryPage implements OnInit {
+  
   categoryName: string = "";
   categories: any = [];
   editMode: boolean = false;
   editId: number = 0;
 
-  constructor(
-    public database: DbService, 
-    public platform: Platform
-  ) { }
+  constructor(public database: DbService, public platform: Platform) {}
 
   ngOnInit() {
     this.getCategories();

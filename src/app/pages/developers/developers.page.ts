@@ -132,7 +132,6 @@ export class DevelopersPage implements OnInit {
         duration: 3000
       });
       toast.present(); */
-
       
     });
   }

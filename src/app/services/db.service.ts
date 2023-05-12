@@ -6,7 +6,9 @@ import { SQLite, SQLiteObject } from "@ionic-native/sqlite/ngx";
   providedIn: "root",
 })
 export class DbService {
+
   databaseObj: SQLiteObject;
+
   tables = {
     categories: "categories",
     persons: "persons",
@@ -88,8 +90,7 @@ export class DbService {
   async editCategory(name: string, id: number) {
     return this.databaseObj
       .executeSql(
-        `UPDATE ${this.tables.categories} SET name = '${name}' WHERE id = ${id}`,
-        []
+        `UPDATE ${this.tables.categories} SET name = '${name}' WHERE id = ${id}`, []
       )
       .then(() => {
         return "category updated";
@@ -106,8 +107,7 @@ export class DbService {
   async addPerson(name: string, category_id: number) {
     return this.databaseObj
       .executeSql(
-        `INSERT INTO ${this.tables.persons} (name, category_id) VALUES ('${name}', ${category_id})`,
-        []
+        `INSERT INTO ${this.tables.persons} (name, category_id) VALUES ('${name}', ${category_id})`, []
       )
       .then(() => {
         return "person created";
@@ -120,8 +120,7 @@ export class DbService {
   async getPersons() {
     return this.databaseObj
       .executeSql(
-        `SELECT persons.id, persons.category_id, persons.name as person, categories.name as category FROM persons INNER JOIN categories ON categories.id = persons.category_id ORDER BY person ASC`,
-        []
+        `SELECT persons.id, persons.category_id, persons.name as person, categories.name as category FROM persons INNER JOIN categories ON categories.id = persons.category_id ORDER BY person ASC`,[]
       )
       .then((res) => {
         return res;
@@ -145,8 +144,7 @@ export class DbService {
   async editPerson(name: string, category_id: number, id: number) {
     return this.databaseObj
       .executeSql(
-        `UPDATE ${this.tables.persons} SET name = '${name}', category_id = ${category_id} WHERE id = ${id}`,
-        []
+        `UPDATE ${this.tables.persons} SET name = '${name}', category_id = ${category_id} WHERE id = ${id}`,[]
       )
       .then(() => {
         return "person updated";

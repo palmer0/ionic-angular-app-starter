@@ -24,7 +24,6 @@ export interface Product {
 })
 export class DatabaseService {
   private database?: SQLiteObject;
-  //private dbReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private dbReady = new BehaviorSubject<boolean>(false);
 
   developers = new BehaviorSubject<Dev[]>([]);
@@ -92,8 +91,9 @@ export class DatabaseService {
   }
 
   loadDevelopers() {
-    return this.database!.executeSql("SELECT * FROM developer", []).then(
-      (data) => {
+    return this.database!.executeSql(
+      "SELECT * FROM developer", []
+    ).then((data) => {
         let developers: Dev[] = [];
 
         if (data.rows.length > 0) {
@@ -138,7 +138,10 @@ export class DatabaseService {
   }
 
   getDeveloper(id: number): Promise<Dev> {
-    return this.database!.executeSql("SELECT * FROM developer WHERE id = ?", [id,]).then((data) => {
+    return this.database!.executeSql(
+      "SELECT * FROM developer WHERE id = ?", 
+      [id,]
+    ).then((data) => {
       /* let skills: string[] = [];
       if (data.rows.item(0).skills != "") {
         skills = JSON.parse(data.rows.item(0).skills);
@@ -155,7 +158,10 @@ export class DatabaseService {
   }
 
   deleteDeveloper(id: number) {
-    return this.database!.executeSql("DELETE FROM developer WHERE id = ?", [id,]).then((_) => {
+    return this.database!.executeSql(
+      "DELETE FROM developer WHERE id = ?", 
+      [id,]
+    ).then((_) => {
       this.loadDevelopers();
       this.loadProducts();
     });
@@ -172,8 +178,7 @@ export class DatabaseService {
   }
 
   loadProducts() {
-    let query =
-      "SELECT product.name, product.id, developer.name AS creator FROM product JOIN developer ON developer.id = product.creatorId";
+    let query = "SELECT product.name, product.id, developer.name AS creator FROM product JOIN developer ON developer.id = product.creatorId";
     return this.database!.executeSql(query, []).then((data) => {
       let products: Product[] = [];
       if (data.rows.length > 0) {

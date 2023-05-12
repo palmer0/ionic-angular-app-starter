@@ -7,6 +7,7 @@ import { DbService } from "src/app/services/db.service";
   styleUrls: ["./person.page.scss"],
 })
 export class PersonPage implements OnInit {
+  
   personName: string = "";
   persons: any = [];
   category_id: number = 0;
@@ -16,7 +17,7 @@ export class PersonPage implements OnInit {
   selected_category_id: number = 0;
   editId: number = 0;
 
-  constructor(public database: DbService) { }
+  constructor(public database: DbService) {}
 
   ngOnInit() {
     this.getCategories();

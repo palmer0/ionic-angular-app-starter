@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import {Animal} from "../../models/animal.model";
-import {AnimalService} from "../../services/animal.service";
-import { DatabaseService } from './../../services/database.service';
+import { Animal } from "../../models/animal.model";
+import { AnimalService } from "../../services/animal.service";
+import { DatabaseService } from "./../../services/database.service";
 //import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -11,26 +11,19 @@ import { DatabaseService } from './../../services/database.service';
   styleUrls: ["home.page.scss"],
 })
 export class HomePage implements OnInit {
+  
   animals: Animal[] = [];
   //animals?: Observable<Animal[]>;
 
-  //title = 'Favorites';
-
   constructor(
     private db: DatabaseService,
-    private animalService: AnimalService,
-    //private toast: ToastController
-  ) {}
+    private animalService: AnimalService
+  ) //private toast: ToastController
+  {}
 
-  /* ngOnInit(): void {
-    //this.getAnimals();
-  } */
-
-  ngOnInit(){
-   
+  ngOnInit() {
     this.getAnimals();
-    //this.title = 'Favorites';
-    
+
     /* this.db.getDatabaseState().subscribe( (dbReady) => {
 
       if (dbReady) {
@@ -41,10 +34,6 @@ export class HomePage implements OnInit {
     }); */
   }
 
-  /* ionViewDidEnter(){
-    this.title = 'Favorites';
-  } */
-
   getAnimals(): void {
     this.animalService.getFavorites().subscribe((animals) => {
       this.animals = animals;
@@ -54,6 +43,4 @@ export class HomePage implements OnInit {
   toggleFavorite(animal: Animal): void {
     this.animalService.toggleFavorite(animal);
   }
-
-  
 }

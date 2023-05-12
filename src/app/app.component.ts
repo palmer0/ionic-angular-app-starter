@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Platform, ToastController } from '@ionic/angular';
-//import { Platform } from "@ionic/angular";
+import { Platform } from '@ionic/angular';
+//import { ToastController } from "@ionic/angular";
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 
@@ -12,6 +12,7 @@ import { DbService } from "src/app/services/db.service";
   styleUrls: ["app.component.scss"],
 })
 export class AppComponent implements OnInit {
+
   //constructor(private toast: ToastController) {}
 
   public selectedIndex = 0;
