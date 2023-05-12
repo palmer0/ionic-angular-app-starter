@@ -26,7 +26,7 @@ export class AnimalService {
 
 
   toggleFavorite(animal: Animal) {
-    animal.favorite = !animal.favorite;
+    //animal.favorite = !animal.favorite;
     this.afs.doc<Animal>(`animals/${animal.id}`).update(animal);
   }
 
