@@ -40,6 +40,7 @@ export class AnimalListPage implements OnInit {
   }
 
   toggleFavorite(animal: Animal): void {
+    animal.favorite = !animal.favorite;
     this.animalService.toggleFavorite(animal);
   }
 }
