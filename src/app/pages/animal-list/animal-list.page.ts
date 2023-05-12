@@ -23,12 +23,14 @@ export class AnimalListPage implements OnInit {
     //this.animals$ = this.animalService.getAllAnimals();
   } */
 
-  ngOnInit() {
-    this.db.getDatabaseState().subscribe((dbReady) => {
+  ngOnInit() {    
+    /* this.db.getDatabaseState().subscribe((dbReady) => {
       if (dbReady) {
         this.getAnimals();
       }
-    });
+    }); */
+
+    this.getAnimals();
   }
 
   getAnimals(): void {

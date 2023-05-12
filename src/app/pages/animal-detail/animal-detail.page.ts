@@ -12,7 +12,8 @@ import { DatabaseService } from "./../../services/database.service";
 export class AnimalDetailPage implements OnInit {
   
   animal?: Animal;
-
+  favorite = false;
+  
   constructor(
     private route: ActivatedRoute,
     private animalService: AnimalService,
@@ -20,11 +21,13 @@ export class AnimalDetailPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.db.getDatabaseState().subscribe((dbReady) => {
+    /* this.db.getDatabaseState().subscribe((dbReady) => {
       if (dbReady) {
         this.getAnimal();
       }
-    });
+    }); */
+
+    this.getAnimal();
   }
 
   getAnimal(): void {
@@ -32,7 +35,10 @@ export class AnimalDetailPage implements OnInit {
     if (id) {
       this.animalService
         .getAnimalById(id)
-        .subscribe((animal) => (this.animal = animal));
+        .subscribe((animal) => {
+          this.animal = animal;
+          this.favorite = animal.favorite;
+      });
     }
   }
 

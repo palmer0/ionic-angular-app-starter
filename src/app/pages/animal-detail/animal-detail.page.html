@@ -21,9 +21,20 @@
 
     <ion-item lines="none">
       <ion-label>Is favorite?</ion-label>
+
+      <!--
       <ion-toggle
         [checked]="animal.favorite"
-        (ionChange)="toggleFavorite()"
+        (ionChange)="toggleFavorite()"></ion-toggle>
+      -->
+
+      <!-- <ion-toggle
+      [(ngModel)]="animal.favorite" 
+        (ngModelChange)="toggleFavorite()"></ion-toggle> -->
+
+      <ion-toggle
+        [(ngModel)]="favorite"
+        (ngModelChange)="toggleFavorite()"
       ></ion-toggle>
     </ion-item>
 
